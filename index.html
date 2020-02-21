@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular 1.x with React</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="app">
+    <div ng-controller="MainController">
+        <header>
+            <h1>Angular 1.x with React Demo</h1>
+        </header>
+        <div class="content">
+            <h2>Welcome {{helloTo}},</h2>
+        </div>
+        <div class="content">
+            <hr /><br /><br />
+            <react-directive></react-directive>
+        </div>
+    </div>
+
+    <script src="dist/bundle.min.js"></script>
+</body>
+
+</html>

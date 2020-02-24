@@ -1,33 +1,42 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  context: __dirname, //path.join(__dirname, "src"),
+  mode: process.env.NODE_ENV || 'development',
   devtool: debug ? "inline-sourcemap" : null,
   entry: {
-    bundle:["./main.js","./src/angular/reactDirective.js"]
-},
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'stage-0', 'react'],
-        }
-      }
-    ]
+    bundle: ["./main.js", "./src/angular/reactDirective.js"]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
     filename: "[name].min.js"
   },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      }
+    ]
+  },
+  stats: {
+    colors: true
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    })
+  ]
 };

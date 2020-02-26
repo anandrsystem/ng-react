@@ -12,7 +12,7 @@ export default class ListComponent extends React.Component {
 
     return (
       <div>
-        <h3>React Listing</h3>
+        <h3>Fruits List</h3>
         <ul>{list}</ul>
       </div>
     );

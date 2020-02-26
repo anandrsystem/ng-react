@@ -1,15 +1,18 @@
 import app from '../../main';
-import React from "react";
-import ReactDOM from "react-dom";
-import ListComponent from "../react/ListComponent";
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from '../react/index';
 
 const reactDirective = app.directive('reactDirective', function () {
   return {
     template: '<div id="reactapp"></div>',
+    scope: {
+      fruits: '='
+    },
     link: function (scope, el, attrs) {
-      const list = ['Apple', 'Orange'];
       ReactDOM.render(
-        <ListComponent itemsList={list} />
+        <App itemsList={scope.fruits} />
         , reactapp);
 
     }

@@ -14,11 +14,15 @@ class ListComponent extends React.Component {
       this.props.history.push('/');
     }
 
+    const message = "Alter triggered from React but Fired from AngularJS";
+
     return (
       <div>
         <h3>Fruits List</h3>
         <ul>{list}</ul>
         <a href='#' onClick={NavigateHome}>Click here for to go home</a>
+        <br /><br />
+        <button onClick={(id) => this.props.alertMessage(message)}>Click to make Angular Alert!!</button>
       </div>
     );
   }

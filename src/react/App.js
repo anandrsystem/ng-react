@@ -3,7 +3,7 @@ import { Router, Route } from 'react-router';
 import { createBrowserHistory } from "history";
 
 import ListComponent from './components/ListComponent';
-import HomeComponent from './components/OtherComponent';
+import HomeComponent from './components/HomeComponent';
 
 const browserHistory = createBrowserHistory();
 

@@ -11,8 +11,9 @@ const reactDirective = app.directive('reactDirective', function () {
       fruits: '='
     },
     link: function (scope, el, attrs) {
+      const alertMessage = (message) => { alert(message); }
       ReactDOM.render(
-        <App itemsList={scope.fruits} />
+        <App itemsList={scope.fruits} alertMessage={alertMessage} />
         , reactapp);
     }
   }
